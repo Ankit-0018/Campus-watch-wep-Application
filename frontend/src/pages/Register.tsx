@@ -78,7 +78,7 @@ function Register() {
 
       
        type FormInput = z.input<typeof formSchema>;  
-    type FormOutput = z.output<typeof formSchema>;
+    
     const form = useForm<FormInput>({
       resolver : zodResolver(formSchema) as any,
       defaultValues : {
@@ -96,7 +96,7 @@ function Register() {
  })
 
 
-const onSubmit = async (data: FormOutput) => {
+const onSubmit = async (data: FormInput) => {
   try {
   
     
