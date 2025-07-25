@@ -1,4 +1,4 @@
-import { RouterProvider } from "react-router-dom";
+import { RouterProvider, useNavigate } from "react-router-dom";
 import AppRoutes from "./components/routes/AppRoutes";
 import { useEffect, useState  } from "react";
 import axios from "axios";
@@ -13,11 +13,16 @@ import { fetchLostFound } from "./redux/lostfound/lostFoundSlice";
 const App: React.FC = () => {
 
 const {isAuthenticated} = useSelector((state : RootState) => state.auth);
+const navigate = useNavigate()
 
 const [loading , setLoading] = useState<boolean>(true)
 
   const dispatch = useDispatch<AppDispatch>();
  useEffect(() => {
+
+  if(!isAuthenticated){
+    navigate("/signIn")
+  }
   const fetchDetails = async () => {
     try {
       const res = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/auth/me`, {
