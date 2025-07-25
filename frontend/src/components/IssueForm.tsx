@@ -231,9 +231,9 @@ export default function IssueForm({onCancel , onComplete} : IssueFormProps) {
 
         <div className="flex justify-end gap-3">
           <Button type="button" variant="outline" onClick={onCancel}>
-            Cancel9B87F5
+            Cancel
           </Button>
-          <Button type="submit" disabled={isSubmitting} className="bg-[#] hover:bg-[#7767BE]">
+          <Button type="submit" disabled={isSubmitting} className="bg-[#9B87F5] hover:bg-[#7767BE]">
             {isSubmitting ? "Submitting..." : "Submit Issue"}
           </Button>
         </div>

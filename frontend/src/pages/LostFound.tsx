@@ -61,7 +61,7 @@ export default function LostFound({}) {
         
         
           <Button 
-            className="bg-campus-purple hover:bg-campus-purple-dark"
+            className="bg-[#9B87F5] hover:bg-[#7664cb]"
             onClick={() => setIsFormOpen(true)}
           >
             <Plus className="mr-2 h-4 w-4" />
