@@ -27,6 +27,9 @@ import { Link } from "react-router-dom";
 
 
 function Register() {
+
+
+
   const formSchema = z
     .object({
       fullName: z
@@ -72,24 +75,27 @@ function Register() {
     
     }));
 
-    type FormData = z.input<typeof formSchema>;
-
- const form = useForm<FormData>({
-  resolver : zodResolver(formSchema),
-  defaultValues : {
+      
+       type FormInput = z.input<typeof formSchema>;  
+    type FormOutput = z.output<typeof formSchema>;
+    const form = useForm<FormInput>({
+      resolver : zodResolver(formSchema) as any,
+      defaultValues : {
       fullName : "",
       email : "",
       createPassword : "",
       confirmPassword : "",
       department : "",
-      role : "",
-      gender : ""
-    
+      role : undefined,
+      gender : "",
+      phone : ""
+      
     }
+    
  })
 
 
-const onSubmit = async (data: FormData) => {
+const onSubmit = async (data: FormOutput) => {
   try {
   
     
