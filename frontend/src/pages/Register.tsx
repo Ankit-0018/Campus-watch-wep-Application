@@ -23,12 +23,13 @@ import { Input } from "@/components/ui/input";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@/components/ui/button";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 
 function Register() {
 
 
+  const navigate = useNavigate()
 
   const formSchema = z
     .object({
@@ -107,7 +108,7 @@ const onSubmit = async (data: FormOutput) => {
     }
 
     toast.success(response.data.message || "Registered successfully!");
-    console.log(response)
+    navigate("/signIn")
   } catch (error: any) {
    if (error instanceof z.ZodError){
     console.log(error.issues)

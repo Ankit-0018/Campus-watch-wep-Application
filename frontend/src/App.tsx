@@ -5,7 +5,6 @@ import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "./redux/auth/authSlice";
 import { logout } from "./redux/auth/authSlice";
-import { setLoading } from "./redux/auth/authSlice";
 import { type AppDispatch, type RootState } from "./redux/store";
 import { fetchIssues } from "./redux/issue/issueSlice";
 import { fetchLostFound } from "./redux/lostfound/lostFoundSlice";
@@ -37,6 +36,8 @@ const [loading , setLoading] = useState<boolean>(true)
 
   fetchDetails();
 }, [isAuthenticated ]);
+
+if(loading) return <p>Loading....</p>
 
   return <RouterProvider router={AppRoutes} />;
 };

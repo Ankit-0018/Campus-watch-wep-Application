@@ -8,7 +8,6 @@ import {  useState } from "react"
 import IssueForm from "@/components/IssueForm";
 import IssueCard from "@/components/IssueCard";
 import { Dialog , DialogContent , DialogTitle , DialogHeader, DialogDescription, DialogFooter  } from "@/components/ui/dialog";
-import { type Issue } from "@/types/Issue";
 import {  useDispatch, useSelector } from "react-redux";
 import type { AppDispatch, RootState } from "@/redux/store";
 import toast from "react-hot-toast";
@@ -17,7 +16,7 @@ import { deleteIssue } from "@/redux/issue/issueSlice";
 
 
 
-function Issue() 
+function IssuePage() 
 
 {
 const {issues} = useSelector((state : RootState) => state.issue)
@@ -190,4 +189,4 @@ const dispatch = useDispatch<AppDispatch>()
   )
 }
 
-export default Issue
+export default IssuePage;

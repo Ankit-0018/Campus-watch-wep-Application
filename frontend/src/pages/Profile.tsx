@@ -1,13 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -17,55 +9,52 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Separator } from "@/components/ui/separator";
 import { useDispatch, useSelector } from "react-redux";
 import type { AppDispatch, RootState } from "@/redux/store";
 import toast from "react-hot-toast";
-import { editProfile, logout , logOutUser } from "@/redux/auth/authSlice";
-
+import { logout, logOutUser } from "@/redux/auth/authSlice";
 
 export default function Profile() {
- const {user , isAuthenticated} = useSelector((state : RootState) => state.auth)
-  const navigate = useNavigate();
-  const dispatch = useDispatch<AppDispatch>()
-  
+  const { user, isAuthenticated } = useSelector(
+    (state: RootState) => state.auth
+  );
+
+  const dispatch = useDispatch<AppDispatch>();
+
   // const [isEditDialogOpen, setIsEditDialogOpen] = useState(false);
   const [isLogoutDialogOpen, setIsLogoutDialogOpen] = useState(false);
-  
-//   const [formState, setFormState] = useState({
-//     fullName : user?.fullName || "",
-//     email: user?.email || "",
-//     department: user?.department || "",
-//     gender: user?.gender || "",
-//   });
-  
-//   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-//     const { name, value } = e.target;
-//     setFormState(prev => ({
-//       ...prev,
-//       [name]: value,
-//     }));
-//   };
-  
-//  const handleSubmit = async (e: React.FormEvent) => {
-//   e.preventDefault();
-//   try {
-    
-//     dispatch(editProfile(formState))
 
-//     toast.success("Profile updated successfully");
-    
-//     setIsEditDialogOpen(false);
-//   } catch (error: any) {
-//     toast.error(error.message || "Something went wrong");
-//   }
-// };
+  //   const [formState, setFormState] = useState({
+  //     fullName : user?.fullName || "",
+  //     email: user?.email || "",
+  //     department: user?.department || "",
+  //     gender: user?.gender || "",
+  //   });
 
-  
- 
+  //   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //     const { name, value } = e.target;
+  //     setFormState(prev => ({
+  //       ...prev,
+  //       [name]: value,
+  //     }));
+  //   };
+
+  //  const handleSubmit = async (e: React.FormEvent) => {
+  //   e.preventDefault();
+  //   try {
+
+  //     dispatch(editProfile(formState))
+
+  //     toast.success("Profile updated successfully");
+
+  //     setIsEditDialogOpen(false);
+  //   } catch (error: any) {
+  //     toast.error(error.message || "Something went wrong");
+  //   }
+  // };
 
   return (
     <div className="mx-auto max-w-3xl">
@@ -75,7 +64,7 @@ export default function Profile() {
           View and manage your account information
         </p>
       </div>
-      
+
       <Card>
         {/* <CardHeader className="flex flex-row items-center justify-between">
           <div>
@@ -94,9 +83,11 @@ export default function Profile() {
           <div className="flex flex-col items-center sm:flex-row sm:items-start sm:gap-8">
             <Avatar className="h-32 w-32">
               <AvatarImage src={user?.avatar} alt={user?.fullName} />
-              <AvatarFallback className="text-4xl">{user?.fullName.charAt(0)}</AvatarFallback>
+              <AvatarFallback className="text-4xl">
+                {user?.fullName.charAt(0)}
+              </AvatarFallback>
             </Avatar>
-            
+
             <div className="mt-4 w-full sm:mt-0">
               <div className="grid gap-4">
                 <div>
@@ -105,16 +96,16 @@ export default function Profile() {
                   </Label>
                   <p className="text-lg font-medium">{user?.fullName}</p>
                 </div>
-                
+
                 <div>
                   <Label className="text-sm font-medium text-muted-foreground">
                     University Email
                   </Label>
                   <p className="text-lg">{user?.email}</p>
                 </div>
-                
+
                 <Separator />
-                
+
                 <div className="grid grid-cols-2 gap-4">
                   <div>
                     <Label className="text-sm font-medium text-muted-foreground">
@@ -122,8 +113,7 @@ export default function Profile() {
                     </Label>
                     <p>{user?.department}</p>
                   </div>
-                  
-          
+
                   <div>
                     <Label className="text-sm font-medium text-muted-foreground">
                       Gender
@@ -135,13 +125,13 @@ export default function Profile() {
             </div>
           </div>
         </CardContent>
-        
+
         <CardFooter className="flex justify-between border-t px-6 py-4">
           <p className="text-sm text-muted-foreground">
             Member since April 2025
           </p>
-          <Button 
-            variant="outline" 
+          <Button
+            variant="outline"
             className="text-destructive hover:bg-destructive/10 hover:text-destructive"
             onClick={() => setIsLogoutDialogOpen(true)}
           >
@@ -149,7 +139,7 @@ export default function Profile() {
           </Button>
         </CardFooter>
       </Card>
-      
+
       {/* Edit Profile Dialog */}
       {/* <Dialog open={isEditDialogOpen} onOpenChange={setIsEditDialogOpen}>
         <DialogContent className="sm:max-w-md">
@@ -241,21 +231,21 @@ export default function Profile() {
               Are you sure you want to log out of your account?
             </DialogDescription>
           </DialogHeader>
-          
+
           <DialogFooter className="mt-4">
-            <Button 
-              variant="outline" 
+            <Button
+              variant="outline"
               onClick={() => setIsLogoutDialogOpen(false)}
             >
               Cancel
             </Button>
-            <Button 
+            <Button
               variant="destructive"
-      onClick={() => {
-                    dispatch(logout())
-                    dispatch(logOutUser())
-                    if(!isAuthenticated) toast.success("Logout Successfully!")
-                  }}
+              onClick={() => {
+                dispatch(logout());
+                dispatch(logOutUser());
+                if (!isAuthenticated) toast.success("Logout Successfully!");
+              }}
             >
               Log out
             </Button>

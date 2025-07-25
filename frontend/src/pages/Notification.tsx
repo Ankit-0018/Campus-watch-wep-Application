@@ -44,7 +44,7 @@ console.log(notifications)
     }
   };
 
-  if (!user || notifications.length < 1) {
+  if (!user || notifications!.length < 1) {
   return (
     <div className="text-center py-12 text-gray-500">
       <Bell className="h-10 w-10 mx-auto mb-4" />

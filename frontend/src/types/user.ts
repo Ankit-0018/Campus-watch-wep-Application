@@ -20,5 +20,7 @@ export interface UserInfo {
  email : string;
     fullName : string;
     department : string;
+    avatar : string;
     _id : string;
+    gender : string;
 }

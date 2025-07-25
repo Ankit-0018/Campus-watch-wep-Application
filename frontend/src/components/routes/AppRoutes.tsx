@@ -4,7 +4,7 @@ import Register from "@/pages/Register";
 import { createBrowserRouter } from "react-router-dom";
 import AuthGuard from "../AuthGuard";
 import Layout from "../Layout";
-import Issue from "@/pages/Issue"
+import Issue from "@/pages/IssuePage"
 import LostFound from "@/pages/LostFound";
 import MyIssues from "@/pages/MyIssues";
 import Profile from "@/pages/Profile";
