@@ -37,7 +37,7 @@ const [loading , setLoading] = useState<boolean>(true)
   };
 
   fetchDetails();
-}, [isAuthenticated ]);
+}, []);
 
 if(loading) return <p>Loading....</p>
 
