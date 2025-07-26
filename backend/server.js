@@ -26,7 +26,9 @@ app.use('/api/users' , verifyJwt ,userRouter)
 app.use('/api/items' , verifyJwt , itemRouter)
 app.use('/api/notifications' , verifyJwt , notificationRouter)
 app.use('/api' , verifyJwt, deleteRouter)
-
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "client", "dist", "index.html"));
+});
 
 const PORT = process.env.PORT || 3000;
 
