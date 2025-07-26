@@ -30,7 +30,7 @@ app.use('/api/items' , verifyJwt , itemRouter)
 app.use('/api/notifications' , verifyJwt , notificationRouter)
 app.use('/api' , verifyJwt, deleteRouter)
 
-app.get("/*", (req, res) => {
+app.get("/*splat", (req, res) => {
   res.sendFile(path.join(frontendPath, "index.html"));
 });
 
