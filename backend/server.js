@@ -1,4 +1,5 @@
 const express = require("express");
+const path = require("path");
 const authRouter = require("./routes/auth.route");
 require("./config/db")
 const cookieParser = require('cookie-parser');
