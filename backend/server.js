@@ -29,7 +29,7 @@ app.use('/api/items' , verifyJwt , itemRouter)
 app.use('/api/notifications' , verifyJwt , notificationRouter)
 app.use('/api' , verifyJwt, deleteRouter)
 
-app.get("*", (req, res) => {
+app.get("/*", (req, res) => {
   const indexPath = path.join(__dirname, "../frontend/dist/index.html");
   res.sendFile(indexPath, (err) => {
     if (err) {
