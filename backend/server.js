@@ -29,9 +29,16 @@ app.use('/api/items' , verifyJwt , itemRouter)
 app.use('/api/notifications' , verifyJwt , notificationRouter)
 app.use('/api' , verifyJwt, deleteRouter)
 
-// app.get("*", (req, res) => {
-//   res.sendFile(path.join(__dirname, "../frontend/dist/index.html"));
-// });
+app.get("*", (req, res) => {
+  const indexPath = path.join(__dirname, "../frontend/dist/index.html");
+  res.sendFile(indexPath, (err) => {
+    if (err) {
+      console.error("Error sending index.html:", err);
+      res.status(500).send("Something went wrong");
+    }
+  });
+});
+
 
 const PORT = process.env.PORT || 3000;
 
