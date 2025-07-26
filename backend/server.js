@@ -20,7 +20,8 @@ app.use(cors({
     origin : process.env.FRONTEND_URL,
     credentials : true
 }))
-app.use(express.static(path.join(__dirname, "../frontend/dist")));
+const frontendPath = path.join(__dirname, "../frontend/dist");
+app.use(express.static(frontendPath));
 app.use(express.json())
 app.use('/auth' , authRouter)
 app.use('/api/issues', verifyJwt , issueRouter)
@@ -30,15 +31,8 @@ app.use('/api/notifications' , verifyJwt , notificationRouter)
 app.use('/api' , verifyJwt, deleteRouter)
 
 app.get("/*", (req, res) => {
-  const indexPath = path.join(__dirname, "../frontend/dist/index.html");
-  res.sendFile(indexPath, (err) => {
-    if (err) {
-      console.error("Error sending index.html:", err);
-      res.status(500).send("Something went wrong");
-    }
-  });
+  res.sendFile(path.join(frontendPath, "index.html"));
 });
-
 
 const PORT = process.env.PORT || 3000;
 
