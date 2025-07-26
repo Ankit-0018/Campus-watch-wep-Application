@@ -2,10 +2,10 @@ import { RouterProvider} from "react-router-dom";
 import AppRoutes from "./components/routes/AppRoutes";
 import { useEffect, useState  } from "react";
 import axios from "axios";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch} from "react-redux";
 import { setUser } from "./redux/auth/authSlice";
 import { logout } from "./redux/auth/authSlice";
-import { type AppDispatch, type RootState } from "./redux/store";
+import { type AppDispatch} from "./redux/store";
 import { fetchIssues } from "./redux/issue/issueSlice";
 import { fetchLostFound } from "./redux/lostfound/lostFoundSlice";
 
