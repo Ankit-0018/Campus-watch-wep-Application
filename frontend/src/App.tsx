@@ -12,9 +12,6 @@ import { fetchLostFound } from "./redux/lostfound/lostFoundSlice";
 
 const App: React.FC = () => {
 
-const {isAuthenticated} = useSelector((state : RootState) => state.auth);
-
-
 const [loading , setLoading] = useState<boolean>(true)
 
   const dispatch = useDispatch<AppDispatch>();
